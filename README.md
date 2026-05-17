@@ -27,7 +27,26 @@ and opens a PR. CI runs `pytest problems/<slug>/tests/` against it.
 - Rate-limited to 1 PR per 5 minutes by default.
 - Default `codebox attempt --dry-run` writes the patch locally; `--push`
   is opt-in.
-- This repo is private until the active flavor proves stable.
+- Slug-level dedup: the box never opens a second PR for a problem that
+  already has an open `codebox-experiment` PR.
+
+## Observe from any agent
+
+The observer is shipped as a standalone MCP tool. Any MCP-capable agent
+can ask "how is the box doing?" without depending on the rest of codebox:
+
+```json
+{
+  "mcpServers": {
+    "codebox-observer": {
+      "command": "/path/to/strix-mind/bin/codebox-observer-mcp"
+    }
+  }
+}
+```
+
+Tools: `ci_rate`, `ci_observe`, `ci_pr`. See
+`strix-mind/box/MCP.md` for details.
 
 ## CI
 
