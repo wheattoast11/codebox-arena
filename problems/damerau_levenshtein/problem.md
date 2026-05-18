@@ -30,7 +30,7 @@ if i >= 2 and j >= 2 and s1[i-1] == s2[j-2] and s1[i-2] == s2[j-1]:
 - `damerau_distance("ab", "ba")` → `1` (single transposition)
 - `damerau_distance("abc", "acb")` → `1` (single transposition)
 - `damerau_distance("kitten", "sitting")` → `3` (same as Levenshtein here)
-- `damerau_distance("ca", "abc")` → `2` (insert b, transpose c↔a)
+- `damerau_distance("ca", "abc")` → `3` (under OSA — the canonical 2D DP — no adjacent literal swap satisfies the transposition recurrence at any (i,j), so OSA falls back to plain Levenshtein. True Damerau-Levenshtein with adjacency tables would give 2.)
 
 ## existing API contract (must keep working)
 

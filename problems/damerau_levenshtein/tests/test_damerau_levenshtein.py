@@ -68,6 +68,12 @@ def test_damerau_deletion_only():
     assert _load_solution().damerau_distance("abcd", "abc") == 1
 
 
-def test_damerau_optimal_alignment_ca_abc():
-    """ca → abc via OSA: insert 'b' (cab), transpose 'ca'→'ac' = 2 edits."""
-    assert _load_solution().damerau_distance("ca", "abc") == 2
+def test_damerau_osa_ca_to_abc():
+    """ca → abc under OSA: no adjacent literal swap satisfies the OSA
+    transposition recurrence at any (i,j), so OSA falls back to plain
+    Levenshtein, which gives 3. True Damerau-Levenshtein (Wagner-Fischer
+    with adjacency tables) would give 2, but the canonical 2D DP — which
+    is what problem.md specifies — is OSA. Original test asserted 2,
+    incorrectly; iter73 corrects it after the box's first PR (#39) caught
+    the spec bug."""
+    assert _load_solution().damerau_distance("ca", "abc") == 3
