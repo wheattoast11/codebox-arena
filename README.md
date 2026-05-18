@@ -6,6 +6,9 @@ the result. Each merged PR (or each failing CI) becomes one external-truth
 data point in the box's polling stream.
 
 Companion to research note 03 at https://intuitionlabs.tech/research/phi/03-pick-your-target.
+The sprint-recap arc is research note 14 at https://intuitionlabs.tech/research/phi/14-twenty-prs-and-one-bench-bug.
+
+**To submit a problem the box will attempt**, see [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 ## Structure
 
